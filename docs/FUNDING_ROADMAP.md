@@ -6,12 +6,18 @@ This is a proposed budget, based on planning estimates. No grant has been receiv
 
 | Priority | Proposed amount | Deliverable and evidence |
 | --- | ---: | --- |
-| Security hardening | $2,000 | Resolve review findings, document the threat boundary, and add targeted regression checks for storage, browser sessions and inference adapters. |
-| Reliable installation | $1,500 | Reproducible macOS setup and recovery instructions tested from a clean checkout; packaging feasibility review. |
-| Creator usability | $1,200 | Simplify the interface around profile, one next action and feedback; test onboarding with consenting nontechnical creators using synthetic or user-owned data. |
-| Testing | $1,000 | Expand isolated workflow and failure tests; establish a clear supported OS/model test matrix. |
-| Documentation | $800 | Improve quick start, troubleshooting, contributor guidance and honest capability reporting. |
+| Security hardening | $2,000 | Resolve review findings, document the threat boundary, and add targeted regression checks for storage, browser sessions and inference adapters, including safe QVAC provider boundaries, response validation and failure handling. |
+| Reliable installation | $1,500 | Develop reproducible macOS setup and recovery instructions tested from a clean checkout, including QVAC runtime dependencies and compatible local model setup on one verified macOS configuration; review packaging feasibility. |
+| Creator usability | $1,200 | Simplify the interface around profile, one next action and feedback; test onboarding with consenting nontechnical creators using synthetic or user-owned data, including proposed QVAC-backed workflows that do not require understanding inference infrastructure. |
+| Testing and validation | $1,000 | Expand isolated workflow and failure tests; implement and validate actual QVAC local inference and structured creator briefings, then establish supported hardware/model configurations through testing. |
+| Documentation | $800 | Improve quick start, troubleshooting, contributor guidance and honest capability reporting, including QVAC setup and integration guidance, verified compatibility, troubleshooting and limitations. |
 | **Total** | **$6,500** | |
+
+## Proposed QVAC Integration
+
+UHI intends to develop a Tether QVAC local inference adapter as proposed grant-funded work. This is not an existing or tested UHI capability. Intended deliverables include real local inference validation and a reproducible creator briefing demonstration on a verified macOS, hardware and model setup; compatibility remains to be established.
+
+This work fits within the existing five budget categories, $6,500 total and four milestones below. It adds no funding request and does not imply funding, affiliation or endorsement by Tether.
 
 ## Milestones
 
