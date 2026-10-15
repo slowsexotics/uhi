@@ -2,7 +2,7 @@
 
 UHI is a local-first personal AI creator assistant in development. It helps you describe what you want to make, choose one practical next action, and keep track of what you tried and learned. The goal is useful personal AI that ordinary people can own and control.
 
-**Status: macOS development preview.** The reviewed source snapshot supports local creator profiles, saved feedback and briefing history, plus an optional local Ollama adapter. It is not yet a packaged application for nontechnical users. The UHI-owned source is licensed under MIT; see [License](#license). Public repository publication is still being prepared.
+**Status: macOS development preview.** The reviewed source snapshot supports local creator profiles, saved feedback and briefing history, plus an optional local Ollama adapter. It is not yet a packaged application for nontechnical users. The UHI-owned source is licensed under MIT; see [License](#license). The source is publicly available at [slowsexotics/uhi](https://github.com/slowsexotics/uhi).
 
 ## Why UHI Exists
 
@@ -103,7 +103,7 @@ Users should be able to choose local or supported third-party AI services as int
 
 **Implemented in this snapshot:** local profile persistence, validated briefing and feedback storage, an optional local adapter, isolated test fixtures and disabled external integrations.
 
-**Current release work:** independently review the publication snapshot; simplify the legacy interface; strengthen filesystem and browser security checks; document a repeatable local setup.
+**Current development work:** continue security review of the published source; simplify the legacy interface; strengthen filesystem and browser security checks; document a repeatable local setup.
 
 **Next goals:**
 
@@ -124,7 +124,7 @@ See the [funding roadmap](docs/FUNDING_ROADMAP.md) for proposed priorities and e
 - Local data is not encrypted by UHI; protect your account, storage and backups. Do not expose the development server to the internet or a network proxy.
 - Python's built-in HTTP server and inline legacy UI scripts are development foundations, not a hardened hosted service.
 - Temporary model-loading code remains experimental and requires a separate explicit environment opt-in; avoid it on shared systems.
-- Final publication review remains a release gate. Automated checks do not prove absence of all vulnerabilities.
+- Ongoing security review remains necessary. Automated checks do not prove absence of all vulnerabilities.
 
 ## Funding and Sustainability
 
@@ -134,7 +134,7 @@ GitHub Sponsors and optional donations are planned. No sponsorship activation, p
 
 ## Contributing and Security
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) for the development boundary and test commands. Small, focused changes that improve safety or help a creator complete a real task are welcome after public release. Use synthetic data and mock external services.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for the development boundary and test commands. Small, focused changes that improve safety or help a creator complete a real task are welcome. Use synthetic data and mock external services.
 
 For suspected vulnerabilities, follow [SECURITY.md](SECURITY.md). Do not put credentials, private files or exploit details in public issues.
 
