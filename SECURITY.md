@@ -12,6 +12,6 @@ Provide a concise description, affected version, impact and a minimal reproducti
 
 ## Review scope and limits
 
-This candidate excludes legacy executables, private integrations, credentials, runtime state and prior Git history. External action endpoints are disabled. Inference is optional and explicitly configured for local Ollama. Tests cover selected input, session, storage and response boundaries with fixtures and mocks.
+This public snapshot excludes legacy executables, private integrations, credentials, runtime state and prior Git history. External action endpoints are disabled. Inference is optional and explicitly configured for local Ollama. Tests cover selected input, session, storage and response boundaries with fixtures and mocks.
 
 These controls are not a guarantee of complete security. Supported release versions, response-time commitments and a formal disclosure policy have not yet been established. Coordinate disclosure privately once a channel is confirmed.

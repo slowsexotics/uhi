@@ -4,6 +4,8 @@ UHI is a local-first personal AI creator assistant in development. It helps you 
 
 **Status: macOS development preview.** The reviewed source snapshot supports local creator profiles, saved feedback and briefing history, plus an optional local Ollama adapter. It is not yet a packaged application for nontechnical users. The UHI-owned source is licensed under MIT; see [License](#license). The source is publicly available at [slowsexotics/uhi](https://github.com/slowsexotics/uhi).
 
+See the public overview: [UHI System Map](https://slowsexotics.github.io/uhi/uhi-system-map.html) — a plain-English map of what's done, in progress, and coming next.
+
 ## Why UHI Exists
 
 Powerful personal AI should be accessible without forcing people into expensive subscriptions or giving up control over their data and workflows. Creators deserve tools that help them build independence. UHI aims to make personal AI practical while leaving people in charge of their work, information and choice of services.

@@ -2,7 +2,7 @@
 
 UHI aims to make personal AI useful to ordinary creators. Start with a focused problem, explain the expected behavior, and keep each contribution small enough to review.
 
-This is a preparation snapshot of MIT-licensed UHI-owned source. Submit only code you own or have permission to contribute under the project's MIT terms. Explain the provenance and license of any borrowed material; do not copy third-party installations into the repository.
+This is a public snapshot of MIT-licensed UHI-owned source. Submit only code you own or have permission to contribute under the project's MIT terms. Explain the provenance and license of any borrowed material; do not copy third-party installations into the repository.
 
 ## Development
 
