@@ -4,6 +4,8 @@ UHI is a local-first personal AI creator assistant in development. Its current s
 
 This is a proposed budget, based on planning estimates. No grant has been received, no application is represented as approved, and no affiliation or endorsement by Tether or another funder is claimed. Effort and sequencing will be refined after security review and user feedback.
 
+**Published:** the public UHI System Map is live at https://slowsexotics.github.io/uhi/uhi-system-map.html — a public-safe overview of what's done, in progress, and coming next. The independent security review is still in progress; this map does not claim it is complete.
+
 | Priority | Proposed amount | Deliverable and evidence |
 | --- | ---: | --- |
 | Security hardening | $2,000 | Resolve review findings, document the threat boundary, and add targeted regression checks for storage, browser sessions and inference adapters, including safe QVAC provider boundaries, response validation and failure handling. |
