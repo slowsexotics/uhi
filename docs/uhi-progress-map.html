@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UHI — progress map</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body { background: #0a0a0a; color: #999; padding: 28px 16px 40px; }
+  h1 { text-align: center; font-size: 30px; margin-bottom: 6px; color: #bbb; }
+  .sub { text-align: center; color: #777; font-size: 15px; margin-bottom: 26px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .phones { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+  .phone { width: 340px; background: #111; border: 1px solid #333; border-radius: 28px; padding: 18px 16px 12px; }
+  .phone h2 { font-size: 15px; color: #777; margin-bottom: 12px; text-align: center; font-weight: 600; }
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .header .title { font-size: 11px; letter-spacing: 2px; color: #777; }
+  .preview { width: 200px; height: 300px; margin: 0 auto; background: #1a1a1a; border: 1px solid #333; border-radius: 16px; position: relative; }
+  .preview .cap { position: absolute; bottom: 14px; left: 10px; right: 10px; text-align: center; font-size: 12px; font-weight: 700; color: #999; }
+  .preview .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.25); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #999; }
+  .bar { margin: 14px 0 10px; background: #151515; border: 1px solid #333; border-radius: 12px; padding: 10px 12px; color: #777; font-size: 13px; }
+  .tools { display: flex; justify-content: space-between; padding: 4px 8px; color: #888; font-size: 11px; }
+  .timeline { margin-top: 12px; height: 34px; background: #111; border: 1px solid #333; border-radius: 10px; display: flex; align-items: center; padding: 0 6px; gap: 4px; }
+  .timeline .seg1 { width: 33%; height: 20px; background: #333; border-radius: 4px; }
+  .timeline .seg2 { width: 50%; height: 20px; background: #2a2a2a; border-radius: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .chip { padding: 6px 10px; border-radius: 8px; font-size: 11px; background: #1c1c1c; border: 1px solid #333; color: #888; }
+  .chip.off { opacity: .4; }
+  .btns { display: flex; gap: 10px; margin-top: 16px; }
+  .btn { flex: 1; text-align: center; padding: 11px 0; border-radius: 12px; font-size: 13px; font-weight: 600; }
+  .btn.draft { background: #111; border: 1px solid #333; color: #999; }
+  .nav { display: flex; justify-content: space-between; padding: 14px 18px 4px; }
+  .nav span { font-size: 20px; }
+  .row { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border-radius: 12px; font-size: 14px; margin-bottom: 4px; }
+  .row .ic { width: 26px; text-align: center; font-size: 15px; }
+  .row.active { background: #222; }
+  .sect { font-size: 10px; letter-spacing: 2px; color: #666; margin: 16px 4px 8px; font-weight: 700; }
+  .green { color: #4ade80; }
+  .yellow { color: #facc15; }
+  .grey { color: #9ca3af; }
+  .red { color: #f87171; }
+  .btn.post-yellow { background: rgba(234,179,8,.12); border: 1px solid rgba(234,179,8,.5); color: #facc15; }
+  .btn.post-green { background: rgba(74,222,128,.12); border: 1px solid rgba(74,222,128,.5); color: #4ade80; }
+  .btn.post-grey { background: #111; border: 1px solid #333; color: #999; }
+  .btn.post-red { background: rgba(248,113,113,.12); border: 1px solid rgba(248,113,113,.5); color: #f87171; }
+  .behind { max-width: 708px; margin: 26px auto 0; background: #111; border: 1px solid #333; border-radius: 16px; padding: 16px 18px; }
+  .behind h3 { font-size: 11px; letter-spacing: 2px; color: #666; margin-bottom: 8px; }
+  .behind p { font-size: 14px; }
+  .legend { display: flex; justify-content: center; gap: 26px; margin-top: 26px; font-size: 14px; color: #888; flex-wrap: wrap; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .g { background: #4ade80; } .y { background: #eab308; } .gr { background: #888; } .r { background: #f87171; }
+  .foot { text-align: center; color: #666; font-size: 13px; margin-top: 22px; }
+  .foot a { color: #999; }
+</style>
+</head>
+<body>
+<!--
+  UHI PROGRESS MAP — LIVE
+  ========================
+  TO UPDATE THIS MAP: edit the STATUS list in the script at the bottom
+  of this file. Change a piece to "green", "yellow", "grey", or "red",
+  update the UPDATED line, then push. Nothing else needs to change.
+    green = done, fully working
+    yellow = partially done, not fully connected right
+    grey = not started / not tried yet
+    red = ran into a problem, doing it later (red stays as the record)
+  No code, no wiring, no real data lives in this file — just the colors
+  and the piece names.
+-->
+<h1>UHI — progress map</h1>
+<p class="sub">Green means done. Yellow means almost. Grey means not started. Red means hit a problem, doing it later.</p>
+<div class="phones">
+  <div class="phone">
+    <h2>CREATE TAB</h2>
+    <div class="header"><span style="font-size:18px;color:#777">☰</span><span class="title">UHI</span><span style="font-size:18px;color:#777">☎</span></div>
+    <div class="preview"><div class="play">▶</div><div class="cap">Rockhounding Lake Huron — Found this absolute beauty today!</div></div>
+    <div class="bar">Tell me what to change...</div>
+    <div class="tools"><span>Text</span><span>Music</span><span>Captions</span><span>Effects</span><span>Trim</span></div>
+    <div class="timeline"><div class="seg1"></div><div class="seg2"></div></div>
+    <div class="chips"><span class="chip">Instagram</span><span class="chip">Facebook</span><span class="chip">Threads</span><span class="chip">TikTok</span><span class="chip">YouTube</span><span class="chip off">X</span></div>
+    <div class="btns"><div class="btn draft">Save draft</div><div class="btn" id="post-btn">Post</div></div>
+    <div class="nav" id="bottom-nav"></div>
+  </div>
+  <div class="phone">
+    <h2>SIDEBAR</h2>
+    <div class="sect">CORE MODULES</div>
+    <div id="modules"></div>
+    <div class="sect">CHANNELS</div>
+    <div id="channels"></div>
+    <div class="sect">ALSO ON THE MAP</div>
+    <div id="also"></div>
+  </div>
+</div>
+<div class="behind">
+  <h3>BEHIND THE APP</h3>
+  <p id="collectors-row"></p>
+</div>
+<div class="legend"><span><i class="g"></i>Done</span><span><i class="y"></i>Partially done</span><span><i class="gr"></i>Not started</span><span><i class="r"></i>Problem — do it later</span></div>
+<p class="foot">UHI is free forever. Built in public. Last updated <span id="updated"></span>. See how it all fits together: <a href="https://slowsexotics.github.io/uhi/uhi-system-map.html">UHI system map</a></p>
+<noscript><p class="foot">This map needs JavaScript to show the colors.</p></noscript>
+<script>
+// STATUS — edit this list to update the map, then push.
+const STATUS = {
+  create: "yellow", chat: "yellow", feed: "yellow",
+  ideas: "yellow", goals: "yellow", library: "yellow",
+  post: "yellow",
+  facebook: "green", youtube: "green",
+  instagram: "grey", x: "grey", threads: "grey", tiktok: "grey",
+  connect: "grey", settings: "grey",
+  collectors: "red"
+};
+const UPDATED = "Nov 8, 2026";
+
+const MODULES = [
+  ["create", "▶", "Create"], ["chat", "✉", "Chat"], ["feed", "▤", "Feed"],
+  ["ideas", "✦", "Ideas"], ["goals", "☑", "Goals"], ["library", "▦", "Library"]
+];
+const CHANNELS = [
+  ["facebook", "f", "Facebook"], ["instagram", "◎", "Instagram"],
+  ["x", "𝕏", "X (Twitter)"], ["youtube", "▶", "YouTube"],
+  ["tiktok", "♪", "TikTok"]
+];
+const ALSO = [
+  ["settings", "⚙︎", "Settings — not started"],
+  ["connect", "🔗︎", "Connect Accounts — not started"]
+];
+
+function row(key, icon, label, active) {
+  const d = document.createElement("div");
+  d.className = "row " + STATUS[key] + (active ? " active" : "");
+  d.innerHTML = '<span class="ic">' + icon + '</span>' + label;
+  return d;
+}
+const modulesEl = document.getElementById("modules");
+MODULES.forEach(function(m, i) { modulesEl.appendChild(row(m[0], m[1], m[2], i === 0)); });
+const channelsEl = document.getElementById("channels");
+CHANNELS.forEach(function(c) { channelsEl.appendChild(row(c[0], c[1], c[2], false)); });
+const addMore = document.createElement("div");
+addMore.className = "row grey";
+addMore.innerHTML = '<span class="ic">+</span>Add more';
+channelsEl.appendChild(addMore);
+const alsoEl = document.getElementById("also");
+ALSO.forEach(function(a) { alsoEl.appendChild(row(a[0], a[1], a[2], false)); });
+
+const nav = document.getElementById("bottom-nav");
+MODULES.forEach(function(m) {
+  const s = document.createElement("span");
+  s.className = STATUS[m[0]];
+  s.textContent = m[1];
+  nav.appendChild(s);
+});
+
+const postBtn = document.getElementById("post-btn");
+postBtn.classList.add("post-" + STATUS.post);
+
+const coll = document.getElementById("collectors-row");
+coll.className = STATUS.collectors;
+coll.textContent = "Analytics collectors — hit a problem, fixing later";
+
+document.getElementById("updated").textContent = UPDATED;
+</script>
+</body>
+</html>
