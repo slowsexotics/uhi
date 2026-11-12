@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UHI — progress map</title>
+<title>UHISI — progress map</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
   body { background: #0a0a0a; color: #999; padding: 28px 16px 40px; }
@@ -66,12 +66,12 @@
   No code, no wiring, no real data lives in this file — just the colors
   and the piece names.
 -->
-<h1>UHI — progress map</h1>
+<h1>UHISI — progress map</h1>
 <p class="sub">Green means done. Yellow means almost. Grey means not started. Red means hit a problem, doing it later.</p>
 <div class="phones">
   <div class="phone">
     <h2>CREATE TAB</h2>
-    <div class="header"><span style="font-size:18px;color:#777">☰</span><span class="title">UHI</span><span style="font-size:18px;color:#777">☎</span></div>
+    <div class="header"><span style="font-size:18px;color:#777">☰</span><span class="title">UHISI</span><span style="font-size:18px;color:#777">☎</span></div>
     <div class="preview"><div class="play">▶</div><div class="cap">Rockhounding Lake Huron — Found this absolute beauty today!</div></div>
     <div class="bar">Tell me what to change...</div>
     <div class="tools"><span>Text</span><span>Music</span><span>Captions</span><span>Effects</span><span>Trim</span></div>
@@ -95,7 +95,7 @@
   <p id="collectors-row"></p>
 </div>
 <div class="legend"><span><i class="g"></i>Done</span><span><i class="y"></i>Partially done</span><span><i class="gr"></i>Not started</span><span><i class="r"></i>Problem — do it later</span></div>
-<p class="foot">Universal High Income Super Intelligence (UHI) is free forever. Built in public. Last updated <span id="updated"></span>. See how it all fits together: <a href="https://slowsexotics.github.io/uhi/uhi-system-map.html">UHI system map</a></p>
+<p class="foot">Universal High Income Super Intelligence (UHISI) is free forever. Built in public. Last updated <span id="updated"></span>. See how it all fits together: <a href="https://slowsexotics.github.io/uhi/uhi-system-map.html">UHISI system map</a></p>
 <noscript><p class="foot">This map needs JavaScript to show the colors.</p></noscript>
 <script>
 // STATUS — edit this list to update the map, then push.
@@ -103,12 +103,12 @@ const STATUS = {
   create: "yellow", chat: "yellow", feed: "yellow",
   ideas: "yellow", goals: "yellow", library: "yellow",
   post: "yellow",
-  facebook: "green", youtube: "green",
+  facebook: "yellow", youtube: "yellow",
   instagram: "grey", x: "grey", threads: "grey", tiktok: "grey",
   connect: "grey", settings: "grey",
   collectors: "red"
 };
-const UPDATED = "Nov 8, 2026";
+const UPDATED = "Nov 12, 2026";
 
 const MODULES = [
   ["create", "▶", "Create"], ["chat", "✉", "Chat"], ["feed", "▤", "Feed"],
